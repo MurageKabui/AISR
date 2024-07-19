@@ -1,2 +1,2 @@
 # AISR
-An Automatic Intelligent SMS Responder.
+An Automatic Intelligent SMS Responder ..
