@@ -3,7 +3,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/MurageKabui/AISR/blob/main/AISR.png?raw=true"><br>
+  <img width="100" height="100" src="https://github.com/MurageKabui/AISR/blob/main/AISR.png?raw=true"><br>
 </p>
 <p align="center">
 	
