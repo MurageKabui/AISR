@@ -12,7 +12,7 @@
 
 <hr/>
 
-> AISR is an attempt to employ AI to autonomously generate intelligent and contextually appropriate replies to incoming SMS messages.
+AISR ; Artificial Intelligence SMS Responder, is a project I started to
+investigate the possibilities of AI in automated text message responses
 
 
-## Idea
