@@ -15,12 +15,15 @@
  *Preview Images Here*
 
 <br>
+<div align="center">
 
-|  Source | Download .apk |
+|  Source | Download |
 |---------|----------|
-| *Github* | [link](www.githhub.com) |
+| *Github* | [AISR.apk](www.githhub.com) |
 | *F-Droid* | N/A |
 | *Playstore* | N/A |
+
+</div>
 
 ## 🤔 How It Works
 
