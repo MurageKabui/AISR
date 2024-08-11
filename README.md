@@ -13,10 +13,11 @@
 ---
 <br>
 
-|              |                         |
-|--------------|-------------------------|
-| **Download Link** | [link](www.githhub.com) |
-| Current Version   | v2.1.0 |
+|  Source | Download .apk |
+|---------|----------|
+| *Github* | [link](www.githhub.com) |
+| *F-Droid* | N/A |
+| *Playstore* | N/A |
 
 ## How It Works
 
