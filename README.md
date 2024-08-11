@@ -35,16 +35,15 @@
     4. **AI-Powered Response Generation**:
        - The extracted SMS body along with the last nth messages are sent to Groqcloud AI API for analysis in order to generate a contextually accurate reply.
        
-       A customized system prompt is also used at this point to allow a personalized reply for the received message.
+       > A system prompt can be set-up to allow a personalized processing for the message.
     
     5. **User Interaction**:
        - After the AI generates a reply, the app prompts the user to review and approve the response. An adjustable timer is initiated, giving the user a specified amount of time to approve or modify the reply.
     
     6. **Automated Reply**:
-       - If the user approves the AI-generated reply within the given time, the app uses the SMS plugin to send the reply back to the original sender. If the timer expires without user intervention, the app can either send the reply automatically or cancel the operation based on predefined settings.
-    
-    > This process allows for a smooth and automated interaction with SMS messages, enhancing the user experience by combining native device features with advanced AI capabilities.
-
+       - If the user approves the AI-generated reply within the given time, the reply is sent back to the original sender.
+       
+       If the timer expires without user intervention, the app can either send the reply automatically or cancel the operation based on predefined settings.
   
 </details>
 
