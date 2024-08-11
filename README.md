@@ -88,4 +88,4 @@ Here are some of the key features included in the app, aimed at making things mo
     > This will allow the user to tweak the system prompt so the generated replies suit their preferences and personalities.
 
 * [x] Voice enabled interactions
-    > Automatically reads incoming messages aloud and voices the AI-generated reply. Users can choose from various voices and respond with "yes" to send the reply or "no" to cancel it..
+    > Automatically reads incoming messages aloud and voices the AI-generated reply. Users can choose from various voices and respond with "yes" to send the reply or "no" to cancel it.
