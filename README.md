@@ -22,7 +22,7 @@
 | *F-Droid* | N/A |
 | *Playstore* | N/A |
 
-## How It Works
+## 🤔 How It Works
 
 ```mermaid
 sequenceDiagram
