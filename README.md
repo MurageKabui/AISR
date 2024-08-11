@@ -43,9 +43,9 @@ sequenceDiagram
     CordovaApp->>User: Prompt user to send reply (adjustable timer)
     User-->>CordovaApp: User allows reply (before timer ends)?
     alt User approves reply
-        CordovaApp->>SMSReceive: Send the reply to the address
+        CordovaApp->>Device: Send the reply to the address
     else User disapproves or timer ends
-        CordovaApp->>SMSReceive: Don't send or cancel reply
+        <!--CordovaApp->>SMSReceive: Don't send or cancel reply-->
     end
 ```
 
