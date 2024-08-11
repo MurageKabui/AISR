@@ -51,7 +51,7 @@ sequenceDiagram
 
 <details>
 
-   <summary>step-by-step breakdown</summary>
+   <summary>A step-by-step breakdown</summary>
   
   
    1. **Device Initialization**: 
