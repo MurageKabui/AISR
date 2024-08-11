@@ -11,6 +11,12 @@
 </p>
 
 ---
+<br>
+
+|              |                         |
+|--------------|-------------------------|
+| **Download Link** | [link](www.githhub.com) |
+| Current Version   | v2.1.0 |
 
 ## How It Works
 
