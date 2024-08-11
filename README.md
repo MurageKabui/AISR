@@ -13,20 +13,21 @@
 ---
 
 
+
 ## How It Works
 
 <details>
   
   <summary>step-by-step breakdown</summary>
   
- <br>
- 
-1. Device Initialization**: 
-
+  
+1. **Device Initialization**: 
    - The app is launched, `deviceready` event is fired, it signifies the app is ready to interact with native plugins and features via cordova.
 
 2. **Registering the SMS Listener**:
-   - After firing the `deviceready` event, if SMS watching is started an event listener ``onSMSArrive`` from ``cordova-plugin-sms-receive``. This listener is responsible for detecting incoming SMS messages on the device.
+   - After firing the `deviceready` event, if SMS watching is started, the event listener ``onSMSArrive`` from ``cordova-plugin-sms-receive`` is registered. This listener is responsible for detecting incoming SMS messages on the device.
+   
+   > This is assuming that the Phone and SMS permission is allowed.
 
 3. **Capturing Incoming SMS**:
    - When a new SMS message is detected, `onSMSArrive` event is triggered.  We proceed to extract the SMS data, specifically the message body, sender's address and current date.
@@ -56,9 +57,10 @@ sequenceDiagram
     participant User as End User
 
     Device->>CordovaApp: device ready event triggered
+    CordovaApp->>User: Prompt to allow Watching SMS messages
     CordovaApp->>SMSReceive: onSMSArrive event registered in DOM
     SMSReceive-->>CordovaApp: Incoming SMS detected
-    CordovaApp->>CordovaApp: Extract body, address and date
+    CordovaApp->>CordovaApp: Extract body, address and date from message
     CordovaApp->>AI: Send SMS body for reply generation
     AI-->>CordovaApp: Contextually accurate reply generated
     CordovaApp->>User: Prompt user to send reply (adjustable timer)
