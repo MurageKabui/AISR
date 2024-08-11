@@ -14,6 +14,31 @@
 
 ## How It Works
 
+```mermaid
+sequenceDiagram
+    participant Device as Device
+    participant CordovaApp as AISR
+    participant SMSReceive as cordova-plugin-sms-receive
+    participant AI as GroqCloud AI API
+    participant User as End User
+
+    Device->>CordovaApp: device ready event triggered
+    CordovaApp->>User: Prompt to allow Watching SMS messages
+    CordovaApp->>SMSReceive: onSMSArrive event registered in DOM
+    SMSReceive-->>CordovaApp: Incoming SMS detected
+    CordovaApp->>CordovaApp: Extract body, address and date from message
+    CordovaApp->>AI: Send SMS body to AI for reply generation
+    AI-->>CordovaApp: Contextually accurate reply generated
+    CordovaApp->>CordovaApp: Reply is rendered into chatbox
+    CordovaApp->>User: Prompt user to send reply (adjustable timer)
+    User-->>CordovaApp: User allows reply (before timer ends)?
+    alt User approves reply
+        CordovaApp->>SMSReceive: Send reply to address using plugin
+    else User disapproves or timer ends
+        CordovaApp->>SMSReceive: Don't send or cancel reply
+    end
+```
+
 <details>
 
    <summary>step-by-step breakdown</summary>
@@ -44,28 +69,3 @@
        If the timer expires without user intervention, the app can either send the reply automatically or cancel the operation based on predefined settings.
   
 </details>
-
-```mermaid
-sequenceDiagram
-    participant Device as Device
-    participant CordovaApp as AISR
-    participant SMSReceive as cordova-plugin-sms-receive
-    participant AI as GroqCloud AI API
-    participant User as End User
-
-    Device->>CordovaApp: device ready event triggered
-    CordovaApp->>User: Prompt to allow Watching SMS messages
-    CordovaApp->>SMSReceive: onSMSArrive event registered in DOM
-    SMSReceive-->>CordovaApp: Incoming SMS detected
-    CordovaApp->>CordovaApp: Extract body, address and date from message
-    CordovaApp->>AI: Send SMS body to AI for reply generation
-    AI-->>CordovaApp: Contextually accurate reply generated
-    CordovaApp->>CordovaApp: Reply is rendered into chatbox
-    CordovaApp->>User: Prompt user to send reply (adjustable timer)
-    User-->>CordovaApp: User allows reply (before timer ends)?
-    alt User approves reply
-        CordovaApp->>SMSReceive: Send reply to address using plugin
-    else User disapproves or timer ends
-        CordovaApp->>SMSReceive: Don't send or cancel reply
-    end
-```
