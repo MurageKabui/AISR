@@ -23,9 +23,9 @@ sequenceDiagram
     participant User as End User
 
     Device->>CordovaApp: device ready event triggered
-    CordovaApp->>SMSReceive: Register onSMSArrive event
+    CordovaApp->>SMSReceive: onSMSArrive event registered in DOM
     SMSReceive-->>CordovaApp: Incoming SMS detected
-    CordovaApp->>CordovaApp: Extract body and address
+    CordovaApp->>CordovaApp: Extract body, address and date
     CordovaApp->>AI: Send SMS body for reply generation
     AI-->>CordovaApp: Contextually accurate reply generated
     CordovaApp->>User: Prompt user to send reply (adjustable timer)
