@@ -40,7 +40,7 @@ sequenceDiagram
     CordovaApp->>SMSReceive: onSMSArrive event registered in DOM
     SMSReceive-->>CordovaApp: Incoming SMS detected
     CordovaApp->>CordovaApp: Extract body, address and date from message
-    CordovaApp->>AI: Send SMS body to AI for reply generation
+    CordovaApp->>AI: Send SMS body along with previous Nth Messages to AI for reply generation
     AI-->>CordovaApp: Contextually accurate reply generated
     CordovaApp->>CordovaApp: Reply is rendered into chatbox
     CordovaApp->>User: Prompt user to send reply (adjustable timer)
