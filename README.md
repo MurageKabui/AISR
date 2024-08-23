@@ -79,7 +79,8 @@ sequenceDiagram
    6. **Automated Reply**:
        - If the user approves the AI-generated reply within the given time, the reply is sent back to the original sender.
        
-       If the timer expires without user intervention, the app can either send the reply automatically or cancel the operation based on predefined settings.
+       If the timer expires without user intervention, the app sends the reply automatically or cancels the operation based on predefined settings.
+
   
 </details>
 
@@ -88,7 +89,7 @@ sequenceDiagram
 Here are some of the key features included in the app, aimed at making things more convenient and customizable ..
 
 * [x] Customizable System Prompt
-    > This will allow the user to tweak the system prompt so the generated replies suit their preferences and personalities.
+    > This allows a user to tweak the system prompt so the generated replies suit their preferences and personality.
 
 * [x] Voice enabled interactions
     > Automatically reads incoming messages aloud and voices the AI-generated reply. Users can choose from various voices and respond with "yes" to send the reply or "no" to cancel it.
