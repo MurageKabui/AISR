@@ -3,11 +3,11 @@
 
 
 <p align="center">
-  <img width="100" height="100" src="https://github.com/MurageKabui/AISR/blob/main/AISR.png?raw=true"><br>
+  <img width="100" height="100" src="https://github.com/MurageKabui/AISR/blob/main/Logo.png?raw=true"><br>
 </p>
 
 <p align="center">
-	AISR is an attempt to employ AI to generate contextually accurate replies to incoming SMS messages on Android.
+	AISR is an attempt to employ AI to generate intelligent and contextually accurate replies to incoming SMS messages on Android.
 </p>
 
 ---
@@ -15,15 +15,12 @@
  *Preview Images Here*
 
 <br>
-<div align="center">
 
-|  Source | Download |
+|  Source | Download ``.apk`` |
 |---------|----------|
-| *Github* | [AISR.apk](www.githhub.com) |
+| *Github* | [link](www.githhub.com) |
 | *F-Droid* | N/A |
 | *Playstore* | N/A |
-
-</div>
 
 ## 🤔 How It Works
 
@@ -40,7 +37,7 @@ sequenceDiagram
     CordovaApp->>SMSReceive: onSMSArrive event registered in DOM
     SMSReceive-->>CordovaApp: Incoming SMS detected
     CordovaApp->>CordovaApp: Extract body, address and date from message
-    CordovaApp->>AI: Send SMS body along with previous Nth Messages to AI for reply generation
+    CordovaApp->>AI: Send SMS body to AI for reply generation
     AI-->>CordovaApp: Contextually accurate reply generated
     CordovaApp->>CordovaApp: Reply is rendered into chatbox
     CordovaApp->>User: Prompt user to send reply (adjustable timer)
@@ -79,8 +76,7 @@ sequenceDiagram
    6. **Automated Reply**:
        - If the user approves the AI-generated reply within the given time, the reply is sent back to the original sender.
        
-       If the timer expires without user intervention, the app sends the reply automatically or cancels the operation based on predefined settings.
-
+       If the timer expires without user intervention, the app can either send the reply automatically or cancel the operation based on predefined settings.
   
 </details>
 
@@ -89,7 +85,10 @@ sequenceDiagram
 Here are some of the key features included in the app, aimed at making things more convenient and customizable ..
 
 * [x] Customizable System Prompt
-    > This allows a user to tweak the system prompt so the generated replies suit their preferences and personality.
+    > This will allow the user to tweak the system prompt so the generated replies suit their preferences and personalities.
 
 * [x] Voice enabled interactions
-    > Automatically reads incoming messages aloud and voices the AI-generated reply. Users can choose from various voices and respond with "yes" to send the reply or "no" to cancel it.
+    > Automatically reads incoming messages aloud and voices the AI-generated reply. Users can choose from various voices and respond with "yes" to send the reply or "no" to cancel it..
+
+* [ ] Suggested Replies
+    > Provides context-aware replies by analyzing the chat history and presents relevant, pre-formulated replies that users can select and send back. Suggested Replies adapt to the user's communication style over time, providing increasingly personalized and relevant options.
