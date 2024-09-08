@@ -1,7 +1,5 @@
 # AISR
 
-
-
 <p align="center">
   <img width="100" height="100" src="https://github.com/MurageKabui/AISR/blob/main/Logo.png?raw=true"><br>
 </p>
