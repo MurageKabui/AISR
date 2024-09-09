@@ -24,26 +24,66 @@
 
 ```mermaid
 sequenceDiagram
-    participant Device as Device
-    participant CordovaApp as AISR
+    participant Device as Android Device
+    participant CordovaApp as AISR App
     participant SMSReceive as cordova-plugin-sms-receive
+    participant Storage as Local Storage
     participant AI as GroqCloud AI API
     participant User as End User
 
     Device->>CordovaApp: device ready event triggered
-    CordovaApp->>User: Prompt to allow Watching SMS messages
-    CordovaApp->>SMSReceive: onSMSArrive event registered in DOM
-    SMSReceive-->>CordovaApp: Incoming SMS detected
-    CordovaApp->>CordovaApp: Extract body, address and date from message
-    CordovaApp->>AI: Send SMS body to AI for reply generation
-    AI-->>CordovaApp: Contextually accurate reply generated
-    CordovaApp->>CordovaApp: Reply is rendered into chatbox
-    CordovaApp->>User: Prompt user to send reply (adjustable timer)
-    User-->>CordovaApp: User allows reply (before timer ends)?
-    alt User approves reply
-        CordovaApp->>Device: Send the reply to the address
-    else User disapproves or timer ends
-        CordovaApp->>SMSReceive: Don't send or cancel reply
+    CordovaApp->>Storage: Load user preferences
+    CordovaApp->>User: Prompt for SMS permissions (if not granted)
+    User-->>CordovaApp: Grant SMS permissions
+    CordovaApp->>SMSReceive: Initialize and register onSMSArrive event
+    CordovaApp->>CordovaApp: Start background service
+
+    loop Background Service Running
+        SMSReceive-->>CordovaApp: Incoming SMS detected
+        CordovaApp->>CordovaApp: Extract body, address, date from message
+        CordovaApp->>Storage: Store incoming SMS details
+        CordovaApp->>CordovaApp: Apply user-defined filters (if any)
+        alt SMS passes filters
+            CordovaApp->>AI: Send SMS body and context to AI
+            AI->>AI: Process request (tokenize, analyze, generate)
+            AI-->>CordovaApp: Return contextually accurate reply
+            CordovaApp->>CordovaApp: Apply post-processing rules
+            CordovaApp->>Storage: Store AI-generated reply
+            CordovaApp->>CordovaApp: Render reply in chatbox
+            CordovaApp->>User: Notify user of new message (based on settings)
+            CordovaApp->>CordovaApp: Start adjustable reply timer
+            
+            alt User interaction before timer ends
+                User->>CordovaApp: Open app and review reply
+                User-->>CordovaApp: Edit reply (optional)
+                User-->>CordovaApp: Approve or reject reply
+            else Timer ends without user interaction
+                CordovaApp->>CordovaApp: Handle based on user preferences
+            end
+
+            alt Reply approved (by user or auto)
+                CordovaApp->>Device: Send reply via SMS
+                Device-->>CordovaApp: SMS sent confirmation
+                CordovaApp->>Storage: Update conversation history
+            else Reply rejected or cancelled
+                CordovaApp->>Storage: Mark reply as rejected
+            end
+        else SMS filtered out
+            CordovaApp->>Storage: Log filtered SMS
+        end
+    end
+
+    par Error Handling
+        CordovaApp->>CordovaApp: Monitor for errors (API, SMS, etc.)
+        CordovaApp->>User: Notify of critical errors
+        CordovaApp->>Storage: Log errors for troubleshooting
+    and Battery Optimization
+        CordovaApp->>Device: Request battery optimization exemption
+        Device-->>CordovaApp: Grant/Deny optimization exemption
+        CordovaApp->>CordovaApp: Adjust background service based on battery status
+    and Periodic Tasks
+        CordovaApp->>Storage: Perform periodic cleanup of old data
+        CordovaApp->>AI: Periodic model updates or fine-tuning
     end
 ```
 
